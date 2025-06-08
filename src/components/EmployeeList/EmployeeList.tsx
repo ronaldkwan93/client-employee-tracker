@@ -1,13 +1,13 @@
-import type { Employee } from "../../App";
+import { useDataContext } from "../../context/DataContextProvider";
 
-type EmployeeListProps = {
-  data: Employee [];
-};
 
-const EmployeeList = ({data}: EmployeeListProps) => {
+const EmployeeList = () => {
+  const {employees} = useDataContext();
+
   return <div>
-    {data.map((employee) => (<div>
-      p
+
+    {employees.map((employee) => (<div>
+      
     </div>))}
   </div>;
 };
