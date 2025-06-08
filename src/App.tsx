@@ -1,13 +1,16 @@
 import { useEffect, useState } from "react";
 import "./App.css";
 import { getAllData } from "./services/dataServices";
+import { BrowserRouter, Route, Routes } from "react-router";
+import HomePage from "./pages/HomePage";
+import EmployeeDetails from "./pages/EmployeeDetails";
 
-type Employee = {
+export type Employee = {
   id: number;
   firstName: string;
   middleName: string;
   lastName: string;
-  email: string; 
+  email: string;
 };
 
 function App() {
@@ -17,11 +20,18 @@ function App() {
     getAllData().then((result) => setEmployees(result));
   }, []);
 
-  console.log(employees)
+  console.log(employees);
 
-  return <>
-  {employees.map((employee) => (<div key={employee.id}><p>First name: {employee.firstName}</p></div>))}
-  </>;
+  return (
+    <>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/employeeDetails" element={<EmployeeDetails />} />
+        </Routes>
+      </BrowserRouter>
+    </>
+  );
 }
 
 export default App;
