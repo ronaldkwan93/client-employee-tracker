@@ -1,5 +1,5 @@
 import { createContext, useContext, useEffect, useState } from "react";
-import { getAllData } from "../services/dataServices";
+import { getAllEmployees } from "../services/dataServices";
 
 export const DataContext = createContext<DataContext | null>(null);
 
@@ -29,7 +29,7 @@ export default function DataContextProvider({
   const [employees, setEmployees] = useState([]);
 
   useEffect(() => {
-    getAllData().then((result) => setEmployees(result));
+    getAllEmployees().then((result) => setEmployees(result));
   }, []);
 
   return (
