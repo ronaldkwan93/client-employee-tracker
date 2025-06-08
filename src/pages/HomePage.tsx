@@ -1,3 +1,4 @@
+import EmployeeList from "../components/EmployeeList/EmployeeList";
 import { useDataContext } from "../context/DataContextProvider";
 
 const HomePage = () => {
@@ -5,7 +6,7 @@ const HomePage = () => {
     
     console.log(employees);
 
-  return <div>This is homePage </div>;
+  return <><EmployeeList/></>;
 };
 
 export default HomePage;

@@ -3,12 +3,16 @@ import { getAllData } from "../services/dataServices";
 
 export const DataContext = createContext<DataContext | null>(null);
 
+type Contract = "CONTRACT" | "PERMANENT";
+
 export type Employee = {
   id: number;
   firstName: string;
   middleName: string;
   lastName: string;
   email: string;
+  address: string;
+  contractType: Contract;
 };
 
 type DataContextProviderAProps = {
@@ -16,7 +20,7 @@ type DataContextProviderAProps = {
 };
 
 type DataContext = {
-  employees: string[];
+  employees: Employee[];
 };
 
 export default function DataContextProvider({
