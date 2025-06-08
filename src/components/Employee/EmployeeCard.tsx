@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router";
 import {
   useDataContext,
   type Employee,
@@ -9,6 +10,8 @@ type EmployeeProps = {
 };
 
 const EmployeeCard = ({ data }: EmployeeProps) => {
+  const navigate = useNavigate();
+
   const { setEmployees } = useDataContext();
 
   const handleRemove = () => {
@@ -17,6 +20,10 @@ const EmployeeCard = ({ data }: EmployeeProps) => {
       prevEmployees.filter((emp) => emp.id !== data.id)
     );
   };
+  
+  const handleEdit = () => {
+    navigate(`/employeeDetails/${data.id}`)
+  }
 
   return (
     <div>
@@ -25,7 +32,7 @@ const EmployeeCard = ({ data }: EmployeeProps) => {
       </p>
       <p>{data.contractType}</p>
       <p>{data.email}</p>
-      <button>Edit</button>
+      <button onClick={() => handleEdit()}>Edit</button>
       <button onClick={() => handleRemove()}>Remove</button>
     </div>
   );

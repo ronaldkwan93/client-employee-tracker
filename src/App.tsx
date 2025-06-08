@@ -4,10 +4,7 @@ import HomePage from "./pages/HomePage";
 import EmployeeDetails from "./pages/EmployeeDetails";
 import DataContextProvider from "./context/DataContextProvider";
 
-
-
 function App() {
-  
   return (
     <>
       <BrowserRouter>
@@ -15,6 +12,7 @@ function App() {
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/employeeDetails" element={<EmployeeDetails />} />
+            <Route path="/employeeDetails/:id" element={<EmployeeDetails />} />
           </Routes>
         </DataContextProvider>
       </BrowserRouter>

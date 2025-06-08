@@ -1,12 +1,18 @@
+import AddEmployee from "../components/AddEmployee/AddEmployee";
 import EmployeeList from "../components/EmployeeList/EmployeeList";
 import { useDataContext } from "../context/DataContextProvider";
 
 const HomePage = () => {
-    const {employees} = useDataContext();
-    
-    console.log(employees);
+  const { employees } = useDataContext();
 
-  return <><EmployeeList/></>;
+  console.log(employees);
+
+  return (
+    <>
+      <AddEmployee/>
+      <EmployeeList />
+    </>
+  );
 };
 
 export default HomePage;
