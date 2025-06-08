@@ -1,4 +1,7 @@
-import type { Employee } from "../../context/DataContextProvider";
+import {
+  useDataContext,
+  type Employee,
+} from "../../context/DataContextProvider";
 import { deleteEmployeeById } from "../../services/dataServices";
 
 type EmployeeProps = {
@@ -6,8 +9,13 @@ type EmployeeProps = {
 };
 
 const EmployeeCard = ({ data }: EmployeeProps) => {
+  const { setEmployees } = useDataContext();
+
   const handleRemove = () => {
     deleteEmployeeById(data.id);
+    setEmployees((prevEmployees) =>
+      prevEmployees.filter((emp) => emp.id !== data.id)
+    );
   };
 
   return (

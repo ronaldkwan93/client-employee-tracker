@@ -21,7 +21,7 @@ export const deleteEmployeeById = async (id: number) => {
       throw new Error("Failed to delete, please try again");
     }
 
-    const result = await response.json();
-    return result;
+     
+
   } catch (error) {}
 };
