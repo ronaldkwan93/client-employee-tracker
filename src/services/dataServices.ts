@@ -1,3 +1,5 @@
+import type { Employee } from "../context/DataContextProvider";
+
 export const getAllEmployees = async () => {
   const response = await fetch("http://localhost:8080/employees");
   if (!response.ok) {
@@ -5,6 +7,24 @@ export const getAllEmployees = async () => {
   }
 
   const result = response.json();
+
+  return result;
+};
+
+export const createEmployee = async (data: Employee) => {
+  const response = await fetch("http://localhost:8080/employees", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(data),
+  });
+  const result = await response.json();
+
+  if (!response.ok) {
+    const message = result?.message || "Unknown error occurred";
+    throw new Error(message);
+  }
 
   return result;
 };

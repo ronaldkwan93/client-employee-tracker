@@ -4,3 +4,4 @@
 
 - BrowserRouter
 - React-Router-Dom
+- Zod (Schema validation)
