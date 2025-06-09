@@ -2,8 +2,10 @@ import { useRef } from "react";
 import { useNavigate } from "react-router";
 import { createEmployee } from "../../services/dataServices";
 import { employeeSchema } from "../../schemas/employeeSchema";
+import { useDataContext } from "../../context/DataContextProvider";
 
 const EmployeeForm = () => {
+  const {setRefresh} = useDataContext();
   const navigate = useNavigate();
   const formRef = useRef(null);
 
@@ -34,6 +36,10 @@ const EmployeeForm = () => {
     } catch (error) {
       console.error("Failed to create employee:", error);
     }
+
+    setRefresh(previous => previous + 1);
+
+    navigate('/');
   };
 
   const handleCancel = (e: React.FormEvent<HTMLFormElement>) => {

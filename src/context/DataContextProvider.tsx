@@ -22,19 +22,21 @@ type DataContextProviderAProps = {
 type DataContext = {
   employees: Employee[];
   setEmployees: React.Dispatch<React.SetStateAction<Employee[]>>;
+  setRefresh: React.Dispatch<React.SetStateAction<number>>;
 };
 
 export default function DataContextProvider({
   children,
 }: DataContextProviderAProps) {
   const [employees, setEmployees] = useState<Employee[]>([]);
+  const [refresh, setRefresh] = useState(0);
 
   useEffect(() => {
     getAllEmployees().then((result) => setEmployees(result));
-  }, []);
+  }, [refresh]);
 
   return (
-    <DataContext.Provider value={{ employees, setEmployees }}>
+    <DataContext.Provider value={{ employees, setEmployees, setRefresh }}>
       {children}
     </DataContext.Provider>
   );

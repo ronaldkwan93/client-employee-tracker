@@ -12,13 +12,14 @@ type EmployeeProps = {
 const EmployeeCard = ({ data }: EmployeeProps) => {
   const navigate = useNavigate();
 
-  const { setEmployees } = useDataContext();
+  const { setRefresh } = useDataContext();
 
   const handleRemove = () => {
     deleteEmployeeById(data.id);
-    setEmployees((prevEmployees) =>
-      prevEmployees.filter((emp) => emp.id !== data.id)
-    );
+    // setEmployees((prevEmployees) =>
+    //   prevEmployees.filter((emp) => emp.id !== data.id)
+    // );
+    setRefresh(previous => previous + 1);
   };
   
   const handleEdit = () => {
