@@ -9,6 +9,7 @@ const HomePage = () => {
 
   return (
     <>
+    <h2>Employee List</h2>
       <AddEmployee/>
       <EmployeeList />
     </>
