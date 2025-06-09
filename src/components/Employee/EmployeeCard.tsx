@@ -14,17 +14,16 @@ const EmployeeCard = ({ data }: EmployeeProps) => {
 
   const { setEmployees } = useDataContext();
 
-  const handleRemove = () => {
+  const handleRemove = async () => {
     deleteEmployeeById(data.id);
     setEmployees((prevEmployees) =>
       prevEmployees.filter((emp) => emp.id !== data.id)
     );
-    // setRefresh(previous => previous + 1);
   };
-  
+
   const handleEdit = () => {
-    navigate(`/employeeDetails/${data.id}`)
-  }
+    navigate(`/employeeDetails/${data.id}`);
+  };
 
   return (
     <div>
