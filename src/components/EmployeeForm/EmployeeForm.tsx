@@ -27,8 +27,8 @@ const EmployeeForm = ({ data }: EmployeeFormProps) => {
 
     const rawData = Object.fromEntries(formData.entries());
 
-
     console.log(rawData, "rawdatas");
+
     //handle form validation
     const parsed = employeeSchema.safeParse(rawData);
 
@@ -74,7 +74,11 @@ const EmployeeForm = ({ data }: EmployeeFormProps) => {
 
   return (
     <div>
-      <form ref={formRef} onSubmit={handleSubmit} key={data?.id || "new"}>
+      <form
+        ref={formRef}
+        onSubmit={handleSubmit}
+        key={data?.id || "createMode"}
+      >
         <div>
           <h3>Personal information</h3>
           <div>
@@ -129,7 +133,7 @@ const EmployeeForm = ({ data }: EmployeeFormProps) => {
               name="contractType"
               value="CONTRACT"
               defaultChecked={data?.contractType === "CONTRACT"}
-            />{" "}
+            />
             Contract
           </div>
           <div>
