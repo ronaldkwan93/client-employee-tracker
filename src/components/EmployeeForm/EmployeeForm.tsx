@@ -1,6 +1,9 @@
 import { useRef } from "react";
 import { useNavigate } from "react-router";
-import { createEmployee } from "../../services/dataServices";
+import {
+  createEmployee,
+  updateEmployeeById,
+} from "../../services/dataServices";
 import { employeeSchema } from "../../schemas/employeeSchema";
 import {
   useDataContext,
@@ -24,6 +27,7 @@ const EmployeeForm = ({ data }: EmployeeFormProps) => {
 
     const rawData = Object.fromEntries(formData.entries());
 
+
     console.log(rawData, "rawdatas");
     //handle form validation
     const parsed = employeeSchema.safeParse(rawData);
@@ -43,10 +47,19 @@ const EmployeeForm = ({ data }: EmployeeFormProps) => {
     };
 
     console.log(employee);
-    try {
-      await createEmployee(employee);
-    } catch (error) {
-      console.error("Failed to create employee:", error);
+
+    if (data) {
+      try {
+        await updateEmployeeById(data.id, employee);
+      } catch (error) {
+        console.error("Failed to update employee:", error);
+      }
+    } else {
+      try {
+        await createEmployee(employee);
+      } catch (error) {
+        console.error("Failed to create employee:", error);
+      }
     }
 
     setRefresh((previous) => previous + 1);
@@ -76,7 +89,7 @@ const EmployeeForm = ({ data }: EmployeeFormProps) => {
             <label htmlFor="">Middle name (if applicable)</label>
             <input
               type="text"
-              name="middleName"
+              name="middlename"
               defaultValue={data?.middlename}
             />
           </div>
@@ -124,12 +137,24 @@ const EmployeeForm = ({ data }: EmployeeFormProps) => {
             <input
               type="date"
               name="startDate"
-              defaultValue={data?.startDate ? new Date(data.startDate).toISOString().slice(0, 10) : ""}
+              defaultValue={
+                data?.startDate
+                  ? new Date(data.startDate).toISOString().slice(0, 10)
+                  : ""
+              }
             />
           </div>
           <div>
             <h5>Finish date</h5>
-            <input type="date" name="endDate"  defaultValue={data?.startDate ? new Date(data.endDate).toISOString().slice(0, 10) : ""}/>
+            <input
+              type="date"
+              name="endDate"
+              defaultValue={
+                data?.startDate
+                  ? new Date(data.endDate).toISOString().slice(0, 10)
+                  : ""
+              }
+            />
           </div>
           <div>
             <label htmlFor="">
@@ -160,7 +185,11 @@ const EmployeeForm = ({ data }: EmployeeFormProps) => {
         </div>
         <div>
           <h5>Hours per week</h5>
-          <input type="number" name="hoursPerWeek" defaultValue={data?.hoursPerWeek} />
+          <input
+            type="number"
+            name="hoursPerWeek"
+            defaultValue={data?.hoursPerWeek}
+          />
         </div>
         <button type="submit">Save</button>
         <button onClick={handleCancel}>Cancel</button>

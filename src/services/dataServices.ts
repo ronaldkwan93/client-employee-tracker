@@ -53,3 +53,21 @@ export const getEmployeeById = async (id: number) => {
     return result;
   } catch (error) {}
 };
+
+export const updateEmployeeById = async (id: number, data: Employee) => {
+  const response = await fetch(`http://localhost:8080/employees/${id}`, {
+    method: "PATCH",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(data),
+  });
+  const result = await response.json();
+
+  if (!response.ok) {
+    const message = result?.message || "Unknown error occurred";
+    throw new Error(message);
+  }
+
+  return result;
+}
