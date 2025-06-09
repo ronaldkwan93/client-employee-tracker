@@ -12,14 +12,14 @@ type EmployeeProps = {
 const EmployeeCard = ({ data }: EmployeeProps) => {
   const navigate = useNavigate();
 
-  const { setRefresh } = useDataContext();
+  const { setEmployees } = useDataContext();
 
   const handleRemove = () => {
     deleteEmployeeById(data.id);
-    // setEmployees((prevEmployees) =>
-    //   prevEmployees.filter((emp) => emp.id !== data.id)
-    // );
-    setRefresh(previous => previous + 1);
+    setEmployees((prevEmployees) =>
+      prevEmployees.filter((emp) => emp.id !== data.id)
+    );
+    // setRefresh(previous => previous + 1);
   };
   
   const handleEdit = () => {
@@ -29,7 +29,7 @@ const EmployeeCard = ({ data }: EmployeeProps) => {
   return (
     <div>
       <p>
-        {data.firstName} {data?.middleName} {data.lastName}
+        {data.firstName} {data?.middlename} {data.lastName}
       </p>
       <p>{data.contractType}</p>
       <p>{data.email}</p>

@@ -4,15 +4,21 @@ import { getAllEmployees } from "../services/dataServices";
 export const DataContext = createContext<DataContext | null>(null);
 
 type Contract = "CONTRACT" | "PERMANENT";
+type EmploymentType = "FULL_TIME" | "PART_TIME";
 
 export type Employee = {
   id: number;
   firstName: string;
-  middleName: string;
+  middlename: string;
   lastName: string;
   email: string;
   address: string;
   contractType: Contract;
+  employmentType: EmploymentType;
+  mobile: string;
+  startDate: Date;
+  endDate: Date;
+  hoursPerWeek: number;
 };
 
 type DataContextProviderAProps = {
