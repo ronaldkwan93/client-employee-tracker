@@ -9,7 +9,7 @@ export const employeeSchema = z.object({
   contractType: z.enum(["PERMANENT", "CONTRACT"]),
   employmentType: z.enum(["FULL_TIME", "PART_TIME"]),
   mobile: z.string(),
-  startDate: z.string(),
+  startDate: z.string().min(1, "Start date is required"),
   endDate: z.string(),
-  hoursPerWeek: z.string()
+  hoursPerWeek: z.string(),
 });

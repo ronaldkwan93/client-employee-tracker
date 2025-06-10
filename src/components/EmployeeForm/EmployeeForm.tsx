@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { useNavigate } from "react-router";
 import {
   createEmployee,
@@ -9,8 +9,7 @@ import {
   useDataContext,
   type Employee,
 } from "../../context/DataContextProvider";
-import styles from "./EmployeeForm.module.scss"
-
+import styles from "./EmployeeForm.module.scss";
 
 type EmployeeFormProps = {
   data?: Employee;
@@ -21,7 +20,20 @@ const EmployeeForm = ({ data }: EmployeeFormProps) => {
   const navigate = useNavigate();
   const formRef = useRef(null);
 
+  const [errors, setErrors] = useState<Record<string, any>>({});
+
   console.log(data, "data here");
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name } = e.target;
+
+    if (errors[name]) {
+      setErrors((prev) => ({
+        ...prev,
+        [name]: undefined,
+      }));
+    }
+  };
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -35,6 +47,8 @@ const EmployeeForm = ({ data }: EmployeeFormProps) => {
     const parsed = employeeSchema.safeParse(rawData);
 
     if (!parsed.success) {
+      const errors = parsed.error.format();
+      setErrors(errors);
       console.error("Validation failed:", parsed.error.format());
       return;
     }
@@ -61,6 +75,7 @@ const EmployeeForm = ({ data }: EmployeeFormProps) => {
         await createEmployee(employee);
       } catch (error) {
         console.error("Failed to create employee:", error);
+        return;
       }
     }
 
@@ -83,51 +98,111 @@ const EmployeeForm = ({ data }: EmployeeFormProps) => {
       >
         <div className={styles.container__section}>
           <h3>Personal information</h3>
+
           <div className={styles.container__group}>
+            {errors?.firstName && (
+              <div className={styles.container__group__error}>
+                <p>{errors.firstName._errors}</p>
+              </div>
+            )}
             <label htmlFor="">First name</label>
             <input
               type="text"
               name="firstName"
               defaultValue={data?.firstName}
+              onChange={handleInputChange}
             />
           </div>
           <div className={styles.container__group}>
+            {errors?.middlename && (
+              <div className={styles.container__group__error}>
+                <p>{errors.middlename._errors}</p>
+              </div>
+            )}
             <label htmlFor="">Middle name (if applicable)</label>
             <input
               type="text"
               name="middlename"
               defaultValue={data?.middlename}
+              onChange={handleInputChange}
             />
           </div>
           <div className={styles.container__group}>
+            {errors?.lastName && (
+              <div className={styles.container__group__error}>
+                <p>{errors.lastName._errors}</p>
+              </div>
+            )}
             <label htmlFor="">Last name</label>
-            <input type="text" name="lastName" defaultValue={data?.lastName} />
+            <input
+              type="text"
+              name="lastName"
+              defaultValue={data?.lastName}
+              onChange={handleInputChange}
+            />
           </div>
         </div>
         <div className={styles.container__section}>
           <h3>Contact details</h3>
-          <div className={styles.container__group} >
+          <div className={styles.container__group}>
+            {errors?.email && (
+              <div className={styles.container__group__error}>
+                <p>{errors.email._errors}</p>
+              </div>
+            )}
             <label htmlFor="">Email address</label>
-            <input type="text" name="email" defaultValue={data?.email} />
+            <input
+              type="text"
+              name="email"
+              defaultValue={data?.email}
+              onChange={handleInputChange}
+            />
           </div>
+
           <div className={styles.container__group}>
+            {errors?.mobile && (
+              <div className={styles.container__group__error}>
+                <p>{errors.mobile._errors}</p>
+              </div>
+            )}
             <label htmlFor="">Mobile number</label>
-            <input type="text" name="mobile" defaultValue={data?.mobile} />
+            <input
+              type="text"
+              name="mobile"
+              defaultValue={data?.mobile}
+              onChange={handleInputChange}
+            />
           </div>
           <div className={styles.container__group}>
+            {errors?.address && (
+              <div className={styles.container__group__error}>
+                <p>{errors.address._errors}</p>
+              </div>
+            )}
             <label htmlFor="">Residental address</label>
-            <input type="text" name="address" defaultValue={data?.address} />
+            <input
+              type="text"
+              name="address"
+              defaultValue={data?.address}
+              onChange={handleInputChange}
+            />
           </div>
         </div>
         <div className={styles.container__group}>
           <h3>Employee status</h3>
-          <div >
+          <div>
+            {errors?.contractType && (
+              <div className={styles.container__group__error}>
+                <p>{errors.contractType._errors}</p>
+              </div>
+            )}
             <h5>What is contract type?</h5>
             <input
               type="radio"
               defaultChecked={data?.contractType === "PERMANENT"}
               name="contractType"
               value="PERMANENT"
+              onChange={handleInputChange}
             />
             Permanent
             <input
@@ -135,10 +210,16 @@ const EmployeeForm = ({ data }: EmployeeFormProps) => {
               name="contractType"
               value="CONTRACT"
               defaultChecked={data?.contractType === "CONTRACT"}
+              onChange={handleInputChange}
             />
             Contract
           </div>
           <div className={styles.container__group}>
+            {errors?.startDate && (
+              <div className={styles.container__group__error}>
+                <p>{errors.startDate._errors}</p>
+              </div>
+            )}
             <h5>Start date</h5>
             <input
               type="date"
@@ -148,6 +229,7 @@ const EmployeeForm = ({ data }: EmployeeFormProps) => {
                   ? new Date(data.startDate).toISOString().slice(0, 10)
                   : ""
               }
+              onChange={handleInputChange}
             />
           </div>
           <div className={styles.container__group}>
@@ -156,10 +238,11 @@ const EmployeeForm = ({ data }: EmployeeFormProps) => {
               type="date"
               name="endDate"
               defaultValue={
-                data?.startDate
+                data?.endDate && data.endDate !== null
                   ? new Date(data.endDate).toISOString().slice(0, 10)
                   : ""
               }
+              onChange={handleInputChange}
             />
           </div>
           <div className={styles.container__group}>
@@ -170,12 +253,18 @@ const EmployeeForm = ({ data }: EmployeeFormProps) => {
         </div>
         <div>
           <h5>Is this on a full-time or part-time basis?</h5>
+          {errors?.employmentType && (
+            <div className={styles.container__group__error}>
+              <p>{errors.employmentType._errors}</p>
+            </div>
+          )}
           <label htmlFor="">
             <input
               type="radio"
               name="employmentType"
               defaultChecked={data?.employmentType === "FULL_TIME"}
               value="FULL_TIME"
+              onChange={handleInputChange}
             />
             Full-time
           </label>
@@ -185,16 +274,23 @@ const EmployeeForm = ({ data }: EmployeeFormProps) => {
               name="employmentType"
               value="PART_TIME"
               defaultChecked={data?.employmentType === "PART_TIME"}
+              onChange={handleInputChange}
             />
             Part-time
           </label>
         </div>
         <div className={styles.container__group}>
           <h5>Hours per week</h5>
+          {errors?.hoursPerWeek && (
+            <div className={styles.container__group__error}>
+              <p>{errors.hoursPerWeek._errors}</p>
+            </div>
+          )}
           <input
             type="number"
             name="hoursPerWeek"
             defaultValue={data?.hoursPerWeek}
+            onChange={handleInputChange}
           />
         </div>
         <button type="submit">Save</button>
