@@ -9,6 +9,8 @@ import {
   useDataContext,
   type Employee,
 } from "../../context/DataContextProvider";
+import styles from "./EmployeeForm.module.scss"
+
 
 type EmployeeFormProps = {
   data?: Employee;
@@ -73,15 +75,15 @@ const EmployeeForm = ({ data }: EmployeeFormProps) => {
   };
 
   return (
-    <div>
+    <div className={styles.container}>
       <form
         ref={formRef}
         onSubmit={handleSubmit}
         key={data?.id || "createMode"}
       >
-        <div>
+        <div className={styles.container__section}>
           <h3>Personal information</h3>
-          <div>
+          <div className={styles.container__group}>
             <label htmlFor="">First name</label>
             <input
               type="text"
@@ -89,7 +91,7 @@ const EmployeeForm = ({ data }: EmployeeFormProps) => {
               defaultValue={data?.firstName}
             />
           </div>
-          <div>
+          <div className={styles.container__group}>
             <label htmlFor="">Middle name (if applicable)</label>
             <input
               type="text"
@@ -97,29 +99,29 @@ const EmployeeForm = ({ data }: EmployeeFormProps) => {
               defaultValue={data?.middlename}
             />
           </div>
-          <div>
+          <div className={styles.container__group}>
             <label htmlFor="">Last name</label>
             <input type="text" name="lastName" defaultValue={data?.lastName} />
           </div>
         </div>
-        <div>
+        <div className={styles.container__section}>
           <h3>Contact details</h3>
-          <div>
+          <div className={styles.container__group} >
             <label htmlFor="">Email address</label>
             <input type="text" name="email" defaultValue={data?.email} />
           </div>
-          <div>
+          <div className={styles.container__group}>
             <label htmlFor="">Mobile number</label>
             <input type="text" name="mobile" defaultValue={data?.mobile} />
           </div>
-          <div>
+          <div className={styles.container__group}>
             <label htmlFor="">Residental address</label>
             <input type="text" name="address" defaultValue={data?.address} />
           </div>
         </div>
-        <div>
+        <div className={styles.container__group}>
           <h3>Employee status</h3>
-          <div>
+          <div >
             <h5>What is contract type?</h5>
             <input
               type="radio"
@@ -136,7 +138,7 @@ const EmployeeForm = ({ data }: EmployeeFormProps) => {
             />
             Contract
           </div>
-          <div>
+          <div className={styles.container__group}>
             <h5>Start date</h5>
             <input
               type="date"
@@ -148,7 +150,7 @@ const EmployeeForm = ({ data }: EmployeeFormProps) => {
               }
             />
           </div>
-          <div>
+          <div className={styles.container__group}>
             <h5>Finish date</h5>
             <input
               type="date"
@@ -160,7 +162,7 @@ const EmployeeForm = ({ data }: EmployeeFormProps) => {
               }
             />
           </div>
-          <div>
+          <div className={styles.container__group}>
             <label htmlFor="">
               <input type="checkbox" name="onGoing" /> On going
             </label>
@@ -187,7 +189,7 @@ const EmployeeForm = ({ data }: EmployeeFormProps) => {
             Part-time
           </label>
         </div>
-        <div>
+        <div className={styles.container__group}>
           <h5>Hours per week</h5>
           <input
             type="number"
