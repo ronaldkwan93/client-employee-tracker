@@ -1,12 +1,20 @@
-import styles from './StatsBox.module.scss'
+import styles from "./StatsBox.module.scss";
 
-const StatsBox = () => {
-  return (
-    <div className={styles.container}>
-      <h2>Title</h2>
-      <h2>Statistics</h2>
-    </div>
-  )
+interface StatsBoxProps {
+  data: { title: string; stat: number }[];
 }
 
-export default StatsBox
+const StatsBox = ({ data }: StatsBoxProps) => {
+  return (
+    <div className={styles.container}>
+      {data.map((item, i) => (
+        <div key={i} className={styles.container__boxes}>
+          <h2>{item.title}</h2>
+          <h2 className={styles.container__boxes__stat}>{item.stat}</h2>
+        </div>
+      ))}
+    </div>
+  );
+};
+
+export default StatsBox;

@@ -1,3 +1,32 @@
 .container {
-    
+  display: flex;
+  width: 100%;
+  flex-wrap: wrap;
+  gap: 1em;
+  margin-top: 1em;
+
+  &__boxes {
+    border: 1px solid black;
+    display: flex;
+    flex-direction: column;
+    width: 20%;
+    height: 25%;
+    justify-content: center;
+    align-items: center;
+    border-radius: 6px;
+    text-align: center;
+    box-shadow: 2px 7px 5px 0px rgba(0, 0, 0, 0.43);
+    -webkit-box-shadow: 2px 7px 5px 0px rgba(0, 0, 0, 0.43);
+    -moz-box-shadow: 2px 7px 5px 0px rgba(0, 0, 0, 0.43);
+
+    &:hover {
+      transform: translateY(-5px); 
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15); 
+      border-color: #024083;
+    }
+
+    &__stat {
+        font-size: 4em;
+    }
+  }
 }

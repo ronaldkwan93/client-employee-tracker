@@ -246,11 +246,7 @@ const EmployeeForm = ({ data }: EmployeeFormProps) => {
               onChange={handleInputChange}
             />
           </div>
-          <div className={styles.container__group}>
-            <label htmlFor="">
-              <input type="checkbox" name="onGoing" /> On going
-            </label>
-          </div>
+         <div>If employee is ongoing, please clear Finish date!</div>
         </div>
         <div>
           <h5>Is this on a full-time or part-time basis?</h5>
