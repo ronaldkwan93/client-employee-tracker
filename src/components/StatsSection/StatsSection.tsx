@@ -14,6 +14,15 @@ const StatsSection = () => {
     );
   }).length;
 
+  const upcomingEnds = employees.filter((emp) => {
+    if (!emp.endDate) return false;
+    const end = new Date(emp.endDate);
+    const now = new Date();
+    const inOneMonth = new Date();
+    inOneMonth.setDate(now.getDate() + 30);
+    return end > now && end <= inOneMonth;
+  }).length;
+
   let permanentCount = 0;
   let contractCount = 0;
   let fullTimeCount = 0;
@@ -45,6 +54,7 @@ const StatsSection = () => {
     { title: "Permanent Employees", stat: permanentCount },
     { title: "Full-time Employees", stat: fullTimeCount },
     { title: "Part-time Employees", stat: partTimeCount },
+    { title: "Employees finishing within 30 days", stat: upcomingEnds },
   ];
   return (
     <div className={styles.container}>

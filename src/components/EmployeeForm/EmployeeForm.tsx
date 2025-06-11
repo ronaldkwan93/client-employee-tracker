@@ -58,7 +58,7 @@ const EmployeeForm = ({ data }: EmployeeFormProps) => {
       middlename: parsed.data.middlename ?? "",
       id: 0,
       startDate: new Date(parsed.data.startDate),
-      endDate: new Date(parsed.data.endDate),
+      endDate: parsed.data.endDate ? new Date(parsed.data.endDate) : null,
       hoursPerWeek: Number(parsed.data.hoursPerWeek),
     };
 
@@ -216,12 +216,12 @@ const EmployeeForm = ({ data }: EmployeeFormProps) => {
             Contract
           </div>
           <div className={styles.container__group}>
+            <h5>Start date</h5>
             {errors?.startDate && (
               <div className={styles.container__group__error}>
                 <p>{errors.startDate._errors}</p>
               </div>
             )}
-            <h5>Start date</h5>
             <input
               type="date"
               name="startDate"
@@ -235,6 +235,11 @@ const EmployeeForm = ({ data }: EmployeeFormProps) => {
           </div>
           <div className={styles.container__group}>
             <h5>Finish date</h5>
+            {errors?.endDate && (
+              <div className={styles.container__group__error}>
+                <p>{errors.endDate._errors}</p>
+              </div>
+            )}
             <input
               type="date"
               name="endDate"
@@ -246,7 +251,6 @@ const EmployeeForm = ({ data }: EmployeeFormProps) => {
               onChange={handleInputChange}
             />
           </div>
-         <div>If employee is ongoing, please clear Finish date!</div>
         </div>
         <div>
           <h5>Is this on a full-time or part-time basis?</h5>
@@ -291,8 +295,8 @@ const EmployeeForm = ({ data }: EmployeeFormProps) => {
           />
         </div>
         <button type="submit">Save</button>
-        <button onClick={handleCancel}>Cancel</button>
       </form>
+        <button onClick={handleCancel}>Cancel</button>
     </div>
   );
 };

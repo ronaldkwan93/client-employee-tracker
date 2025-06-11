@@ -17,7 +17,7 @@ export type Employee = {
   employmentType: EmploymentType;
   mobile: string;
   startDate: Date;
-  endDate: Date;
+  endDate: Date | null;
   hoursPerWeek: number;
 };
 
