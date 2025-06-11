@@ -81,12 +81,12 @@ const EmployeeForm = ({ data }: EmployeeFormProps) => {
 
     setRefresh((previous) => previous + 1);
 
-    navigate("/");
+    navigate("/employees");
   };
 
   const handleCancel = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
-    navigate("/");
+    navigate("/employees");
   };
 
   return (

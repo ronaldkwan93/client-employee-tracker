@@ -2,7 +2,7 @@ import AddEmployee from "../components/AddEmployee/AddEmployee";
 import EmployeeList from "../components/EmployeeList/EmployeeList";
 import { useDataContext } from "../context/DataContextProvider";
 
-const HomePage = () => {
+const Employees = () => {
   const { employees } = useDataContext();
 
   console.log(employees);
@@ -16,4 +16,4 @@ const HomePage = () => {
   );
 };
 
-export default HomePage;
+export default Employees;

@@ -1,0 +1,14 @@
+.container {
+    padding: 0 1em;
+    margin: auto 0;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid lightgrey;
+    &__logo {
+       font-size: 3em;
+
+    }
+    &__header {
+        font-size: 2em;
+    }
+}
