@@ -1,14 +1,17 @@
 .container {
-    padding: 0 1em;
-    margin: auto 0;
-    display: flex;
-    align-items: center;
-    border-bottom: 1px solid lightgrey;
-    &__logo {
-       font-size: 3em;
-
-    }
-    &__header {
-        font-size: 2em;
-    }
+  padding: 0 1em;
+  margin: auto 0;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid lightgrey;
+  background-color: rgb(160, 192, 235);
+  box-shadow: 0px 0px 5px 6px rgba(0, 0, 0, 0.16);
+  -webkit-box-shadow: 0px 0px 5px 6px rgba(0, 0, 0, 0.16);
+  -moz-box-shadow: 0px 0px 5px 6px rgba(0, 0, 0, 0.16);
+  &__logo {
+    font-size: 3em;
+  }
+  &__header {
+    font-size: 2em;
+  }
 }

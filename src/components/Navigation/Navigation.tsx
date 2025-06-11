@@ -1,6 +1,7 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGaugeHigh } from "@fortawesome/free-solid-svg-icons";
 import { faUsers } from "@fortawesome/free-solid-svg-icons";
+import { faFile } from "@fortawesome/free-solid-svg-icons";
 import styles from "./Navigation.module.scss";
 import { useLocation, useNavigate } from "react-router";
 
@@ -35,6 +36,10 @@ const Navigation = () => {
       >
         <FontAwesomeIcon icon={faUsers} />
         <h2>Employees</h2>
+      </div>
+      <div className={styles.container__nav}>
+        <FontAwesomeIcon icon={faFile} />
+        <h2>Documents (Coming Soon!)</h2>
       </div>
     </div>
   );
