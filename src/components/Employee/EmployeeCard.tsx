@@ -4,6 +4,7 @@ import {
   type Employee,
 } from "../../context/DataContextProvider";
 import { deleteEmployeeById } from "../../services/dataServices";
+import styles from "./EmployeeCard.module.scss";
 
 type EmployeeProps = {
   data: Employee;
@@ -26,14 +27,17 @@ const EmployeeCard = ({ data }: EmployeeProps) => {
   };
 
   return (
-    <div>
+    <div className={styles.container}>
       <p>
         {data.firstName} {data?.middlename} {data.lastName}
       </p>
+      <img src='usericon.JPG' alt="user" />
       <p>{data.contractType}</p>
       <p>{data.email}</p>
-      <button onClick={() => handleEdit()}>Edit</button>
-      <button onClick={() => handleRemove()}>Remove</button>
+      <div>
+        <button onClick={() => handleEdit()}>Edit</button>
+        <button onClick={() => handleRemove()}>Remove</button>
+      </div>
     </div>
   );
 };

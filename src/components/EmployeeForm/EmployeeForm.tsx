@@ -95,6 +95,7 @@ const EmployeeForm = ({ data }: EmployeeFormProps) => {
         ref={formRef}
         onSubmit={handleSubmit}
         key={data?.id || "createMode"}
+        className={styles.container__form}
       >
         <div className={styles.container__section}>
           <h3>Personal information</h3>

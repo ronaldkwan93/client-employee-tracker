@@ -1,4 +1,5 @@
 import { useNavigate } from "react-router"
+import styles from './AddEmployee.module.scss'
 
 const AddEmployee = () => {
     const navigate = useNavigate();
@@ -6,7 +7,7 @@ const AddEmployee = () => {
         navigate('/employeeDetails')
     }
   return (
-    <div>
+    <div className={styles.container}>
         <button onClick={() => handleAddEmployee()}>Add Employee</button>
     </div>
   )

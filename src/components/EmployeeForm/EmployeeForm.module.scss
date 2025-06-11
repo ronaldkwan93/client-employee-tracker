@@ -1,14 +1,25 @@
 .container {
-    
+    &__form {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        overflow: hidden;
+        height: 60vh;
+    }
 
     &__group {
         display: flex;
         flex-direction: column;
         align-items: start;
+        width: fit-content;
 
         &__error {
             color: red;
         }
     }
 
+    button {
+        margin-right: 30%;
+        margin-top: 1em;
+    }
 }
