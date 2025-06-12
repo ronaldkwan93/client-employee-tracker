@@ -1,7 +1,9 @@
 import type { Employee } from "../context/DataContextProvider";
 
+const API_BASE_URL = "http://localhost:8080";
+
 export const getAllEmployees = async () => {
-  const response = await fetch("http://localhost:8080/employees");
+  const response = await fetch(`${API_BASE_URL}/employees`);
   if (!response.ok) {
     throw new Error("Failed to fetch data");
   }
@@ -12,7 +14,7 @@ export const getAllEmployees = async () => {
 };
 
 export const createEmployee = async (data: Employee) => {
-  const response = await fetch("http://localhost:8080/employees", {
+  const response = await fetch(`${API_BASE_URL}/employees`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -31,7 +33,7 @@ export const createEmployee = async (data: Employee) => {
 
 export const deleteEmployeeById = async (id: number) => {
   try {
-    const response = await fetch(`http://localhost:8080/employees/${id}`, {
+    const response = await fetch(`${API_BASE_URL}/employees/${id}`, {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",
@@ -45,7 +47,7 @@ export const deleteEmployeeById = async (id: number) => {
 
 export const getEmployeeById = async (id: number) => {
   try {
-    const response = await fetch(`http://localhost:8080/employees/${id}`);
+    const response = await fetch(`${API_BASE_URL}/employees/${id}`);
     if (!response.ok) {
       throw new Error("Failed to get Employee data");
     }
@@ -55,7 +57,7 @@ export const getEmployeeById = async (id: number) => {
 };
 
 export const updateEmployeeById = async (id: number, data: Employee) => {
-  const response = await fetch(`http://localhost:8080/employees/${id}`, {
+  const response = await fetch(`${API_BASE_URL}/employees/${id}`, {
     method: "PATCH",
     headers: {
       "Content-Type": "application/json",
@@ -70,4 +72,4 @@ export const updateEmployeeById = async (id: number, data: Employee) => {
   }
 
   return result;
-}
+};

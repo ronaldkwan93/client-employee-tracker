@@ -6,13 +6,18 @@ export const employeeSchema = z
     middlename: z.string().optional(),
     lastName: z.string().min(1, "Last name is required"),
     email: z.string().email(),
-    address: z.string(),
+    address: z.string().min(1, "Address is required"),
     contractType: z.enum(["PERMANENT", "CONTRACT"]),
     employmentType: z.enum(["FULL_TIME", "PART_TIME"]),
-    mobile: z.string(),
+    mobile: z.string().min(1, "Mobile is required"),
     startDate: z.string().min(1, "Start date is required"),
     endDate: z.string().optional(),
-    hoursPerWeek: z.string(),
+    hoursPerWeek: z
+      .string()
+      .min(1, "Hours per week is required")
+      .refine((val) => parseFloat(val) !== 0, {
+        message: "Hours per week cannot be 0",
+      }),
   })
   .refine(
     (data) => {

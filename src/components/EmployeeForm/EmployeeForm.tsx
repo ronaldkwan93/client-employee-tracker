@@ -290,7 +290,7 @@ const EmployeeForm = ({ data }: EmployeeFormProps) => {
           <input
             type="number"
             name="hoursPerWeek"
-            defaultValue={data?.hoursPerWeek}
+            defaultValue={data?.hoursPerWeek ? data?.hoursPerWeek : 38 }
             onChange={handleInputChange}
           />
         </div>
