@@ -1,0 +1,13 @@
+.container {
+  &__details {
+    display: flex;
+    // border: 1px solid black;
+    border-radius: 5px;
+    justify-content: space-between;
+
+    p {
+      color: red;
+      font-size: 1em;
+    }
+  }
+}

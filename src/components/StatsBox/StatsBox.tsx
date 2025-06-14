@@ -3,26 +3,32 @@ import Modal from "../Modal/Modal";
 import styles from "./StatsBox.module.scss";
 
 interface StatsBoxProps {
-  data: { title: string; stat: number; filter?: string; value?: string; }[];
+  data: { title: string; stat: number; filter?: string; value?: string }[];
 }
 
 const StatsBox = ({ data }: StatsBoxProps) => {
   const [modal, setModal] = useState(false);
+  const [selectedData, setSelectedData] = useState<(typeof data)[0] | null>(
+    null
+  );
 
-  const handleOnClick = () => {
+  const handleOnClick = (item: (typeof data)[0]) => {
+    setSelectedData(item);
     setModal(true);
   };
 
-  console.log(data, 'look here');
+  console.log(data, "look here");
 
   return (
     <div className={styles.container}>
-      {modal && <Modal setModal ={setModal} data={data}/>}
+      {modal && selectedData && (
+        <Modal setModal={setModal} data={[selectedData]} />
+      )}
       {data.map((item, i) => (
         <div
           key={i}
           className={styles.container__boxes}
-          onClick={handleOnClick}
+          onClick={() => handleOnClick(item)}
         >
           <h2>{item.title}</h2>
           <h2 className={styles.container__boxes__stat}>{item.stat}</h2>
