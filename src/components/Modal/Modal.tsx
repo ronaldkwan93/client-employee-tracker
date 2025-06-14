@@ -1,10 +1,11 @@
 import styles from "./Modal.module.scss";
 import { useDataContext } from "../../context/DataContextProvider";
 import EmployeeTable from "../EmployeeTable/EmployeeTable";
+import { useEffect } from "react";
 
 interface ModalProps {
   setModal: (value: boolean) => void;
-  data: { title: string; stat: number; filter?: string; value?: string }[];
+  data: { title: string; stat: number; filterValue?: string; value?: string }[];
 }
 
 const Modal = ({ setModal, data }: ModalProps) => {
@@ -15,9 +16,23 @@ const Modal = ({ setModal, data }: ModalProps) => {
     console.log("close modal!");
   };
 
-  console.log(data, 'data in modal')
+  useEffect(() => {
+    const handleEscKey = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        closeModal();
+      }
+    };
 
-//   console.log(employees);
+    document.addEventListener("keydown", handleEscKey);
+
+    return () => {
+      document.removeEventListener("keydown", handleEscKey);
+    };
+  }, []);
+
+  console.log(data, "data in modal");
+
+  //   console.log(employees);
   return (
     <div className={styles.backdrop}>
       <div className={styles.container}>
@@ -25,9 +40,9 @@ const Modal = ({ setModal, data }: ModalProps) => {
           <h1>Overview</h1>
           <p onClick={closeModal}>x</p>
           {employees
-            //   .filter((employee) => {
-            //      employee.data.toLowerCase().includes(data.);
-            //   })
+              .filter((employee) => {
+                //  employee.data.toLowerCase().includes(data.);
+              })
             .map((employee) => (
               <EmployeeTable key={employee.id} data={[employee]} />
             ))}

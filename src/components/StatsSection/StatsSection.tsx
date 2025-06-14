@@ -49,17 +49,42 @@ const StatsSection = () => {
 
   const data = [
     { title: "Total Employees", stat: employeeCount },
-    { title: "New hires this month", stat: newHires },
+    {
+      title: "New hires this month",
+      stat: newHires,
+      filterField: "newHires",
+      filterValue: "true",
+    },
     {
       title: "Contract Employees",
       stat: contractCount,
-      filter: "contractType",
-      value: "PERMANENT",
+      filterField: "contractType",
+      filterValue: "CONTRACT",
     },
-    { title: "Permanent Employees", stat: permanentCount },
-    { title: "Full-time Employees", stat: fullTimeCount },
-    { title: "Part-time Employees", stat: partTimeCount },
-    { title: "Employees finishing within 30 days", stat: upcomingEnds },
+    {
+      title: "Permanent Employees",
+      stat: permanentCount,
+      filterField: "contractType",
+      filterValue: "PERMANENT",
+    },
+    {
+      title: "Full-time Employees",
+      stat: fullTimeCount,
+      filterField: "employmentType",
+      filterValue: "FULL_TIME",
+    },
+    {
+      title: "Part-time Employees",
+      stat: partTimeCount,
+      filterField: "employmentType",
+      filterValue: "PART_TIME",
+    },
+    {
+      title: "Employees finishing within 30 days",
+      stat: upcomingEnds,
+      filterField: "upcomingEnds",
+      filterValue: "true",
+    },
   ];
   return (
     <div className={styles.container}>
