@@ -11,9 +11,11 @@ const StatsBox = ({ data }: StatsBoxProps) => {
   const [selectedData, setSelectedData] = useState<(typeof data)[0] | null>(
     null
   );
+  console.log(data, "pop");
 
   const handleOnClick = (item: (typeof data)[0]) => {
     setSelectedData(item);
+    if (item.stat === 0) return;
     setModal(true);
   };
 
