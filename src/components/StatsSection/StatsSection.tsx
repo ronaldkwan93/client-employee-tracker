@@ -50,7 +50,12 @@ const StatsSection = () => {
   const data = [
     { title: "Total Employees", stat: employeeCount },
     { title: "New hires this month", stat: newHires },
-    { title: "Contract Employees", stat: contractCount },
+    {
+      title: "Contract Employees",
+      stat: contractCount,
+      filter: "contractType",
+      value: "PERMANENT",
+    },
     { title: "Permanent Employees", stat: permanentCount },
     { title: "Full-time Employees", stat: fullTimeCount },
     { title: "Part-time Employees", stat: partTimeCount },

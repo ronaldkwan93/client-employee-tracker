@@ -9,7 +9,7 @@ const Dashboard = () => {
       <div className={styles.container__add}>
         <AddEmployee />
       </div>
-
+        
         <StatsSection/>
     </div>
   );
