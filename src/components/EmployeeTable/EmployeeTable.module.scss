@@ -1,9 +1,18 @@
 .container {
   &__details {
     display: flex;
-    // border: 1px solid black;
     border-radius: 5px;
-    justify-content: space-between;
+    justify-content: flex-start;
+
+    &__id {
+        padding-right: 1em;
+    }
+
+    img {
+        width: 2em;
+        cursor: pointer;
+        margin-left: auto;
+    }
 
     p {
       color: red;

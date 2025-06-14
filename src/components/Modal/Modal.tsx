@@ -2,7 +2,7 @@ import styles from "./Modal.module.scss";
 import { useDataContext } from "../../context/DataContextProvider";
 import EmployeeTable from "../EmployeeTable/EmployeeTable";
 import { useEffect } from "react";
-import { faCompass } from "@fortawesome/free-regular-svg-icons";
+import { faCircleXmark, faCompass } from "@fortawesome/free-regular-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 interface ModalProps {
@@ -25,6 +25,23 @@ const Modal = ({ setModal, data }: ModalProps) => {
   };
 
   useEffect(() => {
+    const scrollPosition = window.pageYOffset;
+
+    document.body.style.overflow = "hidden";
+    document.body.style.position = "fixed";
+    document.body.style.top = `-${scrollPosition}px`;
+    document.body.style.width = "100%";
+
+    return () => {
+      document.body.style.overflow = "";
+      document.body.style.position = "";
+      document.body.style.top = "";
+      document.body.style.width = "";
+      window.scrollTo(0, scrollPosition);
+    };
+  }, []);
+
+  useEffect(() => {
     const handleEscKey = (event: KeyboardEvent) => {
       if (event.key === "Escape") {
         closeModal();
@@ -41,9 +58,8 @@ const Modal = ({ setModal, data }: ModalProps) => {
   const filterCriteria = data[0];
 
   const filteredEmployees = employees.filter((employee) => {
-    // Handle different filter types
     if (!filterCriteria.filterField || !filterCriteria.filterValue) {
-      return true; // Show all employees if no filter
+      return true;
     }
 
     const field = filterCriteria.filterField;
@@ -94,17 +110,20 @@ const Modal = ({ setModal, data }: ModalProps) => {
                 icon={faCompass}
                 className={styles.container__box__header__icon}
               />
-              <h1>Summary</h1>
+              <h1>{data[0].title}</h1>
             </div>
-            <p onClick={closeModal}>x</p>
+            <p onClick={closeModal}>
+              <FontAwesomeIcon icon={faCircleXmark} />
+            </p>
           </div>
           <div className={styles.container__box__details}>
-            <div>
-              <p>Total Employees: {filteredEmployees.length}</p>
+            <div className={styles.container__box__details__left}>
+              <p>Count: {filteredEmployees.length}</p>
               <p>Average Hours Per Week: {averageHoursRounded}</p>
             </div>
-            <div className={styles.container__box__details__right} >
+            <div className={styles.container__box__details__right}>
               <div className={styles.container__box__details__title}>
+                <h5>ID</h5>
                 <h5>Name</h5>
                 <h5>Email</h5>
               </div>

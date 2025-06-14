@@ -29,7 +29,7 @@
 
   &__box {
     padding: 1em;
-    width: 50em;
+    width: 60em;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -42,6 +42,9 @@
       justify-content: space-around;
       align-items: center;
       padding-bottom: 1em;
+    p {
+        cursor: pointer;
+    }
       &__icon {
         font-size: 4em;
         padding-right: 0.5em;
@@ -51,17 +54,30 @@
       display: flex;
       justify-content: center;
       padding-bottom: 5em;
+      &__left {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+
+        p {
+          border: 1px solid black;
+          padding: 1em;
+          border-radius: 6px;
+          margin: 0 0.2em;
+          margin-bottom: 0.3em;
+          font-weight: bold;
+        }   
+      }
       &__right {
-        border: 1px solid black;
         padding: 1em;
         border-radius: 6px;
-        max-height: 20vh; // 70% of viewport height
+        max-height: 28vh;
         overflow-y: auto;
         border: 1px solid #ccc;
       }
       &__title {
         display: flex;
-        gap: 5em;
+        gap: 2em;
       }
     }
   }

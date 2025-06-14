@@ -3,6 +3,7 @@
   padding: 1em;
   border-right: 1px solid lightgrey;
   background-color: rgb(240, 240, 240);
+  height: 150vh;
   &__nav {
     cursor: pointer;
     display: flex;
@@ -13,10 +14,9 @@
       font-size: 1em;
     }
   }
-  
 }
 
 .active {
-    background-color: rgb(214, 214, 214);
-    border-radius: 6px;
+  background-color: rgb(214, 214, 214);
+  border-radius: 6px;
 }
