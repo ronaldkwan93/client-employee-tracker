@@ -1,6 +1,6 @@
 import type { Employee } from "../context/DataContextProvider";
 
-const API_BASE_URL = "http://localhost:8080";
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
 export const getAllEmployees = async () => {
   const response = await fetch(`${API_BASE_URL}/employees`);
@@ -85,13 +85,18 @@ export const getEmployeeStats = async () => {
   } catch (error) {}
 };
 
-export const getFilteredEmployees = async (filterField : string, filterValue: string) => {
-   try {
-    const response = await fetch(`${API_BASE_URL}/employees/list/${filterField}/${filterValue}`);
+export const getFilteredEmployees = async (
+  filterField: string,
+  filterValue: string
+) => {
+  try {
+    const response = await fetch(
+      `${API_BASE_URL}/employees/list/${filterField}/${filterValue}`
+    );
     if (!response.ok) {
       throw new Error("Failed to get filtered employee data");
     }
     const result = await response.json();
     return result;
   } catch (error) {}
-}
+};
