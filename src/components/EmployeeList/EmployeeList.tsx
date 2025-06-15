@@ -25,7 +25,7 @@ const EmployeeList = () => {
           .filter((employee) => {
             return search.toLowerCase() === ""
               ? employee
-              : employee.firstName.toLowerCase().includes(search);
+              : employee.firstName.toLowerCase().includes(search.toLowerCase());
           })
           .map((employee) => (
             <EmployeeCard key={employee.id} data={employee} />
