@@ -53,8 +53,6 @@ const Modal = ({ setModal, data }: ModalProps) => {
   }, []);
 
   const filterCriteria = data[0];
-  // if (!filterCriteria) return <div>Loading...</div>;
-
   // const value = filterCriteria.filterValue ?? "";
 
   // const filteredEmployees = employees.filter((employee) => {

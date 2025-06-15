@@ -60,8 +60,6 @@ const EmployeeForm = ({ data }: EmployeeFormProps) => {
       hoursPerWeek: Number(parsed.data.hoursPerWeek),
     };
 
-    console.log(employee);
-
     if (data) {
       try {
         await updateEmployeeById(data.id, employee);
