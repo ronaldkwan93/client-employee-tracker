@@ -18,8 +18,6 @@ const EmployeeDetails = () => {
     }
   }, [id]);
 
-  console.log(id);
-
   const handleBack = () => {
     id ? navigate("/employees") : navigate("/");
   };

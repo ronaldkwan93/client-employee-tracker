@@ -22,8 +22,6 @@ const EmployeeForm = ({ data }: EmployeeFormProps) => {
 
   const [errors, setErrors] = useState<Record<string, any>>({});
 
-  console.log(data, "data here");
-
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name } = e.target;
 

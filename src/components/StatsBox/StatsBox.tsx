@@ -11,7 +11,6 @@ const StatsBox = ({ data }: StatsBoxProps) => {
   const [selectedData, setSelectedData] = useState<(typeof data)[0] | null>(
     null
   );
-  console.log(data, "pop");
 
   const handleOnClick = (item: (typeof data)[0]) => {
     setSelectedData(item);
@@ -19,7 +18,6 @@ const StatsBox = ({ data }: StatsBoxProps) => {
     setModal(true);
   };
 
-  console.log(data, "look here");
 
   return (
     <div className={styles.container}>

@@ -7,7 +7,6 @@ interface EmployeeTableProps {
 }
 
 const EmployeeTable = ({ data }: EmployeeTableProps) => {
-  console.log(data, "data in table");
   const navigate = useNavigate();
 
   return (

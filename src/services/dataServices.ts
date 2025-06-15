@@ -80,7 +80,18 @@ export const getEmployeeStats = async () => {
     if (!response.ok) {
       throw new Error("Failed to get Employee statistics");
     }
-    const result = response.json();
+    const result = await response.json();
     return result;
   } catch (error) {}
 };
+
+export const getFilteredEmployees = async (filterField : string, filterValue: string) => {
+   try {
+    const response = await fetch(`${API_BASE_URL}/employees/list/${filterField}/${filterValue}`);
+    if (!response.ok) {
+      throw new Error("Failed to get filtered employee data");
+    }
+    const result = await response.json();
+    return result;
+  } catch (error) {}
+}
