@@ -55,6 +55,8 @@ const Modal = ({ setModal, data }: ModalProps) => {
     };
   }, []);
 
+  console.log(data, 'yeeee');
+
   const filterCriteria = data[0];
 
   const filteredEmployees = employees.filter((employee) => {

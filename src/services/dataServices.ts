@@ -73,3 +73,14 @@ export const updateEmployeeById = async (id: number, data: Employee) => {
 
   return result;
 };
+
+export const getEmployeeStats = async () => {
+  try {
+    const response = await fetch(`${API_BASE_URL}/employees/statistics`);
+    if (!response.ok) {
+      throw new Error("Failed to get Employee statistics");
+    }
+    const result = response.json();
+    return result;
+  } catch (error) {}
+};
