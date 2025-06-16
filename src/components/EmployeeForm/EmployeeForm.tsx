@@ -39,8 +39,6 @@ const EmployeeForm = ({ data }: EmployeeFormProps) => {
 
     const rawData = Object.fromEntries(formData.entries());
 
-    console.log(rawData, "rawdatas");
-
     //handle form validation
     const parsed = employeeSchema.safeParse(rawData);
 

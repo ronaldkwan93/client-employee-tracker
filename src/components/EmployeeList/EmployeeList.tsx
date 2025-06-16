@@ -7,8 +7,6 @@ const EmployeeList = () => {
   const [search, setSearch] = useState("");
   const { employees } = useDataContext();
 
-  console.log(search);
-
   if (employees.length === 0) {
     return <div>There are no employees yet!</div>;
   }

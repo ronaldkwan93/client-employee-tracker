@@ -6,6 +6,7 @@ import { getEmployeeStats } from "../../services/dataServices";
 const StatsSection = () => {
   const [stats, setStats] = useState();
 
+  //Previous implementation - business logic (to backend)
   // const now = new Date();
   // const newHires = employees.filter((emp) => {
   //   const start = new Date(emp.startDate);

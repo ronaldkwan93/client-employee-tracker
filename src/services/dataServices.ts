@@ -8,7 +8,7 @@ export const getAllEmployees = async () => {
     throw new Error("Failed to fetch data");
   }
 
-  const result = response.json();
+  const result =  await response.json();
 
   return result;
 };
@@ -51,7 +51,7 @@ export const getEmployeeById = async (id: number) => {
     if (!response.ok) {
       throw new Error("Failed to get Employee data");
     }
-    const result = response.json();
+    const result =  await response.json();
     return result;
   } catch (error) {}
 };

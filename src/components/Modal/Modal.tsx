@@ -53,6 +53,8 @@ const Modal = ({ setModal, data }: ModalProps) => {
   }, []);
 
   const filterCriteria = data[0];
+  
+  //Previous implementation - business logic (to backend)
   // const value = filterCriteria.filterValue ?? "";
 
   // const filteredEmployees = employees.filter((employee) => {
