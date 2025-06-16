@@ -1,6 +1,4 @@
-# Welcome to PulseBoard, your personalised Employee Tracker
-
-## React application with TypeScript
+# Welcome to PulseBoard
 
 ## Demo
 
@@ -21,6 +19,8 @@
 ### DashBoard overviews
 
 ![Image](https://github.com/user-attachments/assets/99ee865f-13dd-416b-9d57-fac29b811fec)
+
+## Tech: React application with TypeScript
 
 ## Libraries
 
