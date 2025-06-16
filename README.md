@@ -1,5 +1,7 @@
 # Welcome to PulseBoard
 
+-Personalised employee tracker
+
 ## Demo
 
 [https://pulseboardio.netlify.app/](https://pulseboardio.netlify.app/)
@@ -20,7 +22,10 @@
 
 ![Image](https://github.com/user-attachments/assets/99ee865f-13dd-416b-9d57-fac29b811fec)
 
-## Tech: React application with TypeScript
+## Tech
+
+- React
+- TypeScript
 
 ## Libraries
 
