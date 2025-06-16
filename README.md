@@ -1,6 +1,10 @@
 # Welcome to PulseBoard
 
-Keep track of your team like never before with a sleek, modern Employee Tracker app. Designed with HR teams and managers in mind, this app lets you add, edit, and monitor employee details effortlessly — all from a centralised dashboard. Visual insights, real-time updates, and an intuitive UI make workforce management smarter and faster.
+Keep track of your team like never before with a sleek, modern Employee Tracker app.
+
+Designed with HR teams and managers in mind, this app lets you add, edit, and monitor employee details effortlessly — all from a centralised dashboard.
+
+Visual insights, real-time updates, and an intuitive UI make workforce management smarter and faster.
 
 ## Demo
 
