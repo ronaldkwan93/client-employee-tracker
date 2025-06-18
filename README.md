@@ -6,6 +6,10 @@ Designed with HR teams and managers in mind, this app lets you add, edit, and mo
 
 Visual insights, real-time updates, and an intuitive UI make workforce management smarter and faster.
 
+## Deployment Status
+
+[![Netlify Status](https://api.netlify.com/api/v1/badges/f42c35b8-3091-4f83-ae8b-e50291b9bea0/deploy-status)](https://app.netlify.com/projects/pulseboardio/deploys)
+
 ## Demo
 
 [https://pulseboardio.netlify.app/](https://pulseboardio.netlify.app/)
