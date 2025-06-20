@@ -45,6 +45,8 @@ Backend (Spring Boot)
 
 - Connected to a MySQL database for persistent data storage
 
+- Implemented Hibernate and JPA for efficient ORM and database interaction
+
 - Built a RESTful API with complete CRUD operations
 
 - Integrated input validation and centralized exception handling
