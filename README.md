@@ -39,6 +39,8 @@ Frontend (React + TypeScript):
 
 - Real-time form validation and error handling
 
+- Custom global state management using a React Context Provider to manage employee data efficiently and avoid prop drilling
+
 Backend (Spring Boot)
 
 - Connected to a MySQL database for persistent data storage
@@ -72,6 +74,10 @@ Backend (Spring Boot)
 ### Employee Form
 
 ![Image](https://github.com/user-attachments/assets/763d9fe8-6ff2-42a0-b2f4-c1bb2d84413d)
+
+### Form Validation
+
+![Image](https://github.com/user-attachments/assets/e353463c-a90d-4479-83c5-5155150b362d)
 
 ### DashBoard overviews
 
@@ -129,8 +135,6 @@ spring.datasource.password=your_password
 spring.jpa.hibernate.ddl-auto=update
 spring.jpa.show-sql=true
 spring.jpa.properties.hibernate.format_sql=true
-spring.jpa.properties.dialect=org.hibernate.dialect.MySQLDialect
-spring.profiles.active=dev
 ```
 
 **4. Install Dependencies:**
@@ -177,6 +181,8 @@ npm run dev
 - Ensuring smooth data flow between frontend and backend with DTOs and API contracts
 
 - Migrating and offloading business logic from frontend to backend for a better client experience
+
+- Avoided prop drilling by implementing global state management using React's `useContext` and a custom provider
 
 ## Areas for Growth
 
