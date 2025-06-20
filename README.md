@@ -1,18 +1,69 @@
-# Welcome to PulseBoard
+# ⚡ PulseBoard
 
 Keep track of your team like never before with a sleek, modern Employee Tracker app.
 
-Designed with HR teams and managers in mind, this app lets you add, edit, and monitor employee details effortlessly — all from a centralised dashboard.
+Designed with HR teams and managers in mind, this full stack application lets you add, edit, and monitor employee details effortlessly — all from a centralised dashboard.
 
-Visual insights, real-time updates, and an intuitive UI make workforce management smarter and faster.
+Responsive frontend built with React + TypeScript, Spring Boot (Java) backend and MySQL database.
 
 ## Deployment Status
 
 [![Netlify Status](https://api.netlify.com/api/v1/badges/f42c35b8-3091-4f83-ae8b-e50291b9bea0/deploy-status)](https://app.netlify.com/projects/pulseboardio/deploys)
 
-## Demo
+## Tech Stack
 
-[https://pulseboardio.netlify.app/](https://pulseboardio.netlify.app/)
+- Frontend: React, TypeScript
+- Styling: SCSS/ CSS Modules
+- Backend: Java, Spring Boot,Spring Data JPA, Maven
+- Database: MySQL
+
+## Table of Contents
+
+- [🔍 Overview](#overview)
+- [✨ Key Features](#key-features)
+- [🎯 Project Objectives](#project-objectives)
+- [📸 Screenshots](#screenshots)
+- [⚙️ Installation Guide](#installation-guide)
+- [🧩 Challenges](#challenges)
+- [🚀 Areas for Growth](#areas-for-growth)
+
+## Overview
+
+PulseBoard is a responsive and interactive tool for managing employee records. It allows users to add, edit, and remove employees, and view them as individual cards or in a centralized dashboard. The dashboard provides filtering options to help users quickly find relevant employee information and gain useful overviews.
+
+## Key Features
+
+Frontend (React + TypeScript):
+
+- Add, edit, and delete employee records
+
+- View employees in a card-based layout
+
+- Dashboard overview with filter and search functionality
+
+- Real-time form validation and error handling
+
+Backend (Spring Boot)
+
+- Connected to a MySQL database for persistent data storage
+
+- Built a RESTful API with complete CRUD operations
+
+- Integrated input validation and centralized exception handling
+
+- Returns meaningful HTTP status codes and descriptive error messages
+
+## Project Objectives
+
+- Create a clean and intuitive tool for managing employees at a glance
+
+- Streamline HR/admin workflows with easy editing, filtering, and deleting of employee records
+
+- Learn and implement a full stack application using React, TypeScript, Java Spring Boot, and MySQL
+
+- Apply best practices in form validation, state management, and component design
+
+## Screenshots
 
 ### Dashboard
 
@@ -30,14 +81,100 @@ Visual insights, real-time updates, and an intuitive UI make workforce managemen
 
 ![Image](https://github.com/user-attachments/assets/99ee865f-13dd-416b-9d57-fac29b811fec)
 
-## Tech
+## Installation Guide
 
-- React
-- TypeScript
+To run this app locally, you'll need both the **frontend** and **backend** running.
 
-## Libraries
+### 🧩 Backend Setup (Spring Boot)
 
-- BrowserRouter
-- React-Router-Dom
-- Zod (Schema validation)
-- Font Awesome (Icons)
+➡️ Backend Repo: [pulseboard-backend](https://github.com/ronaldkwan93/spring-employee-track)
+
+**1. Clone the backend repository:**
+
+```bash
+git clone https://github.com/ronaldkwan93/spring-employee-track.git
+cd spring-employee-track
+```
+
+**2. Configure MySQL:**
+
+- Log in to MySQL (can also be done within the MySQL workbench)
+
+```bash
+mysql -u root -p
+```
+
+- Create a new database:
+
+```sql
+CREATE DATABASE your_database_name;
+```
+
+**3. Configure the application properties:**
+
+- Navigate to the src/main/resources directory
+
+- Create an **application.properties** file and add the following configuration:
+
+```properties
+spring.application.name=employeeTracker
+spring.datasource.url=jdbc:mysql://localhost:3306/your_database_name
+spring.datasource.username=your_username
+spring.datasource.password=your_password
+spring.jpa.hibernate.ddl-auto=update
+spring.jpa.show-sql=true
+spring.jpa.properties.hibernate.format_sql=true
+spring.jpa.properties.dialect=org.hibernate.dialect.MySQLDialect
+spring.profiles.active=dev
+```
+
+**4. Install Dependencies:**
+
+```sh
+mvn clean install
+```
+
+**5. Run the application:**
+
+- Use the following command to run the application:
+
+```sh
+mvn spring-boot:run
+```
+
+### ⚛️ Frontend
+
+#### 1. Getting started
+
+- Clone frontend repository
+
+```bash
+git clone https://github.com/ronaldkwan93/client-employee-tracker.git
+cd client-employee-tracker
+```
+
+- After cloning the frontend repository, run the following commands
+
+```bash
+npm install
+```
+
+```bash
+npm run dev
+```
+
+## Challenges
+
+- Handling case-insensitive search and filtering effectively
+
+- Synchronizing frontend validation (React Hook Form + Zod) with backend constraints
+
+- Ensuring smooth data flow between frontend and backend with DTOs and API contracts
+
+## Areas for Growth
+
+- Add user authentication and role-based access (e.g. manager vs HR)
+
+- Introduce pagination and lazy loading for large datasets
+
+- Enable profile picture uploads or avatars per employee
