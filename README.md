@@ -1,14 +1,10 @@
 # ⚡ PulseBoard
 
-Keep track of your team like never before with a sleek, modern Employee Tracker app.
+Welcome to PulseBoard! Keep track of your team like never before with a sleek, modern full stack Employee Tracker application.
 
-Designed with HR teams and managers in mind, this full stack application lets you add, edit, and monitor employee details effortlessly — all from a centralised dashboard.
+Designed with HR teams and managers in mind, this application lets you add, edit, and monitor employee details effortlessly — **all from a centralised dashboard**.
 
 Responsive frontend built with React + TypeScript, Spring Boot (Java) backend and MySQL database.
-
-## Deployment Status
-
-[![Netlify Status](https://api.netlify.com/api/v1/badges/f42c35b8-3091-4f83-ae8b-e50291b9bea0/deploy-status)](https://app.netlify.com/projects/pulseboardio/deploys)
 
 ## Tech Stack
 
@@ -85,6 +81,15 @@ Backend (Spring Boot)
 
 To run this app locally, you'll need both the **frontend** and **backend** running.
 
+**Install Prerequisites**
+Before installing/running the backend, please make sure you have the following installed:
+
+☕ Java Development Kit (JDK)
+
+📦 Apache Maven
+
+🐬 MySQL Database
+
 ### 🧩 Backend Setup (Spring Boot)
 
 ➡️ Backend Repo: [pulseboard-backend](https://github.com/ronaldkwan93/spring-employee-track)
@@ -98,7 +103,7 @@ cd spring-employee-track
 
 **2. Configure MySQL:**
 
-- Log in to MySQL (can also be done within the MySQL workbench)
+- Log in to MySQL
 
 ```bash
 mysql -u root -p
@@ -167,9 +172,11 @@ npm run dev
 
 - Handling case-insensitive search and filtering effectively
 
-- Synchronizing frontend validation (React Hook Form + Zod) with backend constraints
+- Synchronizing frontend validation (FormData API + Zod) with backend constraints
 
 - Ensuring smooth data flow between frontend and backend with DTOs and API contracts
+
+- Migrating and offloading business logic from frontend to backend for a better client experience
 
 ## Areas for Growth
 
