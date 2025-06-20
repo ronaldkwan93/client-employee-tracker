@@ -151,26 +151,28 @@ mvn clean install
 mvn spring-boot:run
 ```
 
-### ⚛️ Frontend
+### ⚛️ Frontend Setup (React)
 
-#### 1. Getting started
-
-- Clone frontend repository
+#### 1. Clone frontend repository
 
 ```bash
 git clone https://github.com/ronaldkwan93/client-employee-tracker.git
 cd client-employee-tracker
 ```
 
-- After cloning the frontend repository, run the following commands
+#### 2. Install Dependencies
 
 ```bash
 npm install
 ```
 
+#### 3. Run the application
+
 ```bash
 npm run dev
 ```
+
+- Vite should prompt you to connect to localhost: [http://localhost:5173/](http://localhost:5173/)
 
 ## Challenges
 
