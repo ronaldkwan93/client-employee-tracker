@@ -43,7 +43,7 @@ Frontend (React + TypeScript):
 
 Backend (Spring Boot)
 
-- Connected to a MySQL database for persistent data storage
+- Connected to a MySQL database for persistent data storage, with optimized data retrieval using native SQL queries for specific business logic.
 
 - Implemented Hibernate and JPA for efficient ORM and database interaction
 
