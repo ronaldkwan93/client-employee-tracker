@@ -31,7 +31,10 @@ const EmployeeCard = ({ data }: EmployeeProps) => {
       <p>
         {data.firstName} {data?.middlename} {data.lastName}
       </p>
-      <img src='usericon.JPG' alt="user" />
+      <img
+        src={data.profileImageUrl ?? "https://employeetrackerpb.s3.ap-southeast-2.amazonaws.com/public/usericon.JPG"}
+        alt="user"
+      />
       <p>{data.contractType}</p>
       <p>{data.email}</p>
       <div>

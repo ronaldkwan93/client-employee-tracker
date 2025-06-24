@@ -8,19 +8,39 @@ export const getAllEmployees = async () => {
     throw new Error("Failed to fetch data");
   }
 
-  const result =  await response.json();
+  const result = await response.json();
 
   return result;
 };
 
-export const createEmployee = async (data: Employee) => {
+export const createEmployee = async (data: Employee, photo?: File) => {
+  const formData = new FormData();
+  formData.append(
+    "employee",
+    JSON.stringify({
+      firstName: data.firstName,
+      middlename: data.middlename,
+      lastName: data.lastName,
+      email: data.email,
+      mobile: data.mobile,
+      address: data.address,
+      contractType: data.contractType,
+      startDate: data.startDate.toISOString().split("T")[0], //
+      endDate: data.endDate ? data.endDate.toISOString().split("T")[0] : null,
+      employmentType: data.employmentType,
+      hoursPerWeek: data.hoursPerWeek,
+    })
+  );
+
+  if (photo) {
+    formData.append("photo", photo);
+  }
+
   const response = await fetch(`${API_BASE_URL}/employees`, {
     method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(data),
+    body: formData,
   });
+
   const result = await response.json();
 
   if (!response.ok) {
@@ -51,18 +71,41 @@ export const getEmployeeById = async (id: number) => {
     if (!response.ok) {
       throw new Error("Failed to get Employee data");
     }
-    const result =  await response.json();
+    const result = await response.json();
     return result;
   } catch (error) {}
 };
 
-export const updateEmployeeById = async (id: number, data: Employee) => {
+export const updateEmployeeById = async (
+  id: number,
+  data: Employee,
+  photo?: File
+) => {
+  const formData = new FormData();
+  formData.append(
+    "employee",
+    JSON.stringify({
+      firstName: data.firstName,
+      middlename: data.middlename,
+      lastName: data.lastName,
+      email: data.email,
+      mobile: data.mobile,
+      address: data.address,
+      contractType: data.contractType,
+      startDate: data.startDate.toISOString().split("T")[0],
+      endDate: data.endDate ? data.endDate.toISOString().split("T")[0] : null,
+      employmentType: data.employmentType,
+      hoursPerWeek: data.hoursPerWeek,
+    })
+  );
+
+  if (photo) {
+    formData.append("photo", photo);
+  }
+
   const response = await fetch(`${API_BASE_URL}/employees/${id}`, {
     method: "PATCH",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(data),
+    body: formData,
   });
   const result = await response.json();
 

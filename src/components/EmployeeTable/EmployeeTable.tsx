@@ -19,7 +19,7 @@ const EmployeeTable = ({ data }: EmployeeTableProps) => {
             <p>{emp.lastName}</p>
             <p>{emp.email}</p>
             <img
-              src="usericon.JPG"
+              src="https://employeetrackerpb.s3.ap-southeast-2.amazonaws.com/public/usericon.JPG"
               alt="user"
               onClick={() => {
                 navigate(`/employeeDetails/${emp.id}`);

@@ -21,6 +21,13 @@ const EmployeeForm = ({ data }: EmployeeFormProps) => {
   const formRef = useRef(null);
 
   const [errors, setErrors] = useState<Record<string, any>>({});
+  const [selectedPhoto, setSelectedPhoto] = useState<File | null>(null);
+
+  const handlePhotoChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (e.target.files && e.target.files[0]) {
+      setSelectedPhoto(e.target.files[0]);
+    }
+  };
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name } = e.target;
@@ -56,17 +63,18 @@ const EmployeeForm = ({ data }: EmployeeFormProps) => {
       startDate: new Date(parsed.data.startDate),
       endDate: parsed.data.endDate ? new Date(parsed.data.endDate) : null,
       hoursPerWeek: Number(parsed.data.hoursPerWeek),
+      profileImageUrl: data?.profileImageUrl ?? "",
     };
 
     if (data) {
       try {
-        await updateEmployeeById(data.id, employee);
+        await updateEmployeeById(data.id, employee, selectedPhoto || undefined);
       } catch (error) {
         console.error("Failed to update employee:", error);
       }
     } else {
       try {
-        await createEmployee(employee);
+        await createEmployee(employee, selectedPhoto || undefined);
       } catch (error) {
         console.error("Failed to create employee:", error);
         return;
@@ -284,13 +292,34 @@ const EmployeeForm = ({ data }: EmployeeFormProps) => {
           <input
             type="number"
             name="hoursPerWeek"
-            defaultValue={data?.hoursPerWeek ? data?.hoursPerWeek : 38 }
+            defaultValue={data?.hoursPerWeek ? data?.hoursPerWeek : 38}
             onChange={handleInputChange}
           />
         </div>
+        <div className={styles.container__section}>
+          <h3>Photo Upload</h3>
+          <div className={styles.container__group}>
+            <label htmlFor="photo">Profile Photo (optional)</label>
+            <input
+              type="file"
+              id="photo"
+              accept="image/*"
+              onChange={handlePhotoChange}
+            />
+          </div>
+        </div>
+        <div className={styles.container__section}>
+          <h3>Profile Photo</h3>
+          <div className={styles.container__group}>
+            <img src={data?.profileImageUrl ?? "https://employeetrackerpb.s3.ap-southeast-2.amazonaws.com/public/usericon.JPG" } alt="profile picture" />
+          </div>
+        </div>
+        <div>
         <button type="submit">Save</button>
+
+        </div>
       </form>
-        <button onClick={handleCancel}>Cancel</button>
+      <button onClick={handleCancel}>Cancel</button>
     </div>
   );
 };

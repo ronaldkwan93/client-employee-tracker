@@ -19,6 +19,7 @@ export type Employee = {
   startDate: Date;
   endDate: Date | null;
   hoursPerWeek: number;
+  profileImageUrl: string;
 };
 
 type DataContextProviderAProps = {

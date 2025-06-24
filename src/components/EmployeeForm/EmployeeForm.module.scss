@@ -21,10 +21,13 @@
     h5 {
       margin: 3px;
     }
-    gap: 2em 8em;
+    gap: 2em 5em;
     button {
       color: rgb(48, 145, 224);
-      padding: 1em;
+      padding: 1em 2em;
+      display: flex;
+      justify-content: center;
+      align-items: center;
     }
   }
 
@@ -32,13 +35,23 @@
     display: flex;
     flex-direction: column;
     align-items: start;
-    width: 100%;
+    width: 50%;
 
     &__error {
       color: red;
+
       p {
         margin: 0;
       }
     }
+  }
+  img {
+    width: 15em;
+    margin-top: 1em;
+    border-radius: 50px;
+  }
+
+  input {
+    width: auto;
   }
 }
