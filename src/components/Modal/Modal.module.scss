@@ -11,6 +11,11 @@
   justify-content: center;
   align-items: center;
   margin: auto;
+  &__spinner {
+    border-radius: 6px;
+    border: 1px solid lightgrey;
+    box-shadow: 2px 7px 10px 20px rgba(0, 0, 0, 0.3);
+  }
 }
 
 .container {
@@ -42,9 +47,9 @@
       justify-content: space-around;
       align-items: center;
       padding-bottom: 1em;
-    p {
+      p {
         cursor: pointer;
-    }
+      }
       &__icon {
         font-size: 4em;
         padding-right: 0.5em;
@@ -66,7 +71,7 @@
           margin: 0 0.2em;
           margin-bottom: 0.3em;
           font-weight: bold;
-        }   
+        }
       }
       &__right {
         padding: 1em;

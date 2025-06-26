@@ -6,6 +6,12 @@
   -webkit-box-shadow: 2px 7px 5px 6px rgba(0, 0, 0, 0.43);
   -moz-box-shadow: 2px 7px 5px 6px rgba(0, 0, 0, 0.43);
 
+  &__spinner {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
   &__form {
     display: flex;
     flex-direction: column;
@@ -55,3 +61,4 @@
     width: auto;
   }
 }
+

@@ -5,6 +5,7 @@ import { faCircleXmark, faCompass } from "@fortawesome/free-regular-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { getFilteredEmployees } from "../../services/dataServices";
 import type { Employee } from "../../context/DataContextProvider";
+import SpinnerLoader from "../SpinnerLoader/SpinnerLoader";
 
 interface ModalProps {
   setModal: (value: boolean) => void;
@@ -17,10 +18,17 @@ interface ModalProps {
   }[];
 }
 
-
-
 const Modal = ({ setModal, data }: ModalProps) => {
   const [filteredEmployees, setFilteredEmployees] = useState<Employee[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setLoading(false);
+    }, 1300);
+
+    return () => clearTimeout(timer);
+  }, []);
 
   const closeModal = () => {
     setModal(false);
@@ -53,7 +61,7 @@ const Modal = ({ setModal, data }: ModalProps) => {
   }, []);
 
   const filterCriteria = data[0];
-  
+
   //Previous implementation - business logic (to backend)
   // const value = filterCriteria.filterValue ?? "";
 
@@ -121,41 +129,49 @@ const Modal = ({ setModal, data }: ModalProps) => {
 
   return (
     <div className={styles.backdrop}>
-      <div className={styles.container}>
-        <div className={styles.container__box}>
-          <div className={styles.container__box__header}>
-            <div className={styles.container__box__header}>
-              <FontAwesomeIcon
-                icon={faCompass}
-                className={styles.container__box__header__icon}
-              />
-              <h1>{data[0].title}</h1>
-            </div>
-            <p onClick={closeModal}>
-              <FontAwesomeIcon icon={faCircleXmark} />
-            </p>
-          </div>
-          <div className={styles.container__box__details}>
-            <div className={styles.container__box__details__left}>
-              <p>Count: {filteredEmployees.length}</p>
-              <p>Average Hours Per Week: {averageHoursRounded}</p>
-            </div>
-            <div className={styles.container__box__details__right}>
-              <div className={styles.container__box__details__title}>
-                <h5>ID</h5>
-                <h5>Name</h5>
-                <h5>Email</h5>
-              </div>
-
-              <div>
-                {filteredEmployees.map((employee) => (
-                  <EmployeeTable key={employee.id} data={[employee]} />
-                ))}
-              </div>
-            </div>
-          </div>
+      {loading ? (
+        <div className={styles.backdrop__spinner}>
+          <SpinnerLoader />
         </div>
-      </div>
+      ) : (
+        <>
+          <div className={styles.container}>
+            <div className={styles.container__box}>
+              <div className={styles.container__box__header}>
+                <div className={styles.container__box__header}>
+                  <FontAwesomeIcon
+                    icon={faCompass}
+                    className={styles.container__box__header__icon}
+                  />
+                  <h1>{data[0].title}</h1>
+                </div>
+                <p onClick={closeModal}>
+                  <FontAwesomeIcon icon={faCircleXmark} />
+                </p>
+              </div>
+              <div className={styles.container__box__details}>
+                <div className={styles.container__box__details__left}>
+                  <p>Count: {filteredEmployees.length}</p>
+                  <p>Average Hours Per Week: {averageHoursRounded}</p>
+                </div>
+                <div className={styles.container__box__details__right}>
+                  <div className={styles.container__box__details__title}>
+                    <h5>ID</h5>
+                    <h5>Name</h5>
+                    <h5>Email</h5>
+                  </div>
+
+                  <div>
+                    {filteredEmployees.map((employee) => (
+                      <EmployeeTable key={employee.id} data={[employee]} />
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </>
+      )}
     </div>
   );
 };
