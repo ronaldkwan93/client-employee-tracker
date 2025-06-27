@@ -1,5 +1,7 @@
 # ⚡ PulseBoard
 
+- [📸 Screenshots](#screenshots)
+
 Welcome to PulseBoard! Keep track of your team like never before with a sleek, modern full stack Employee Tracker application.
 
 Designed with HR teams and managers in mind, this application lets you add, edit, and monitor employee details effortlessly — **all from a centralised dashboard**.
