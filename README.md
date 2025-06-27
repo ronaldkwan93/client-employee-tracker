@@ -55,6 +55,16 @@ Backend (Spring Boot)
 
 - Returns meaningful HTTP status codes and descriptive error messages
 
+ AWS S3 Integration (Image Uploading)
+ 
+- Integrated AWS S3 for secure image storage and retrieval
+
+- Backend handles multipart file uploads and stores images in Amazon S3.
+
+- URL is returned to the frontend for real-time image preview and persistent display
+
+- Configured Spring Boot to manage credentials and bucket configuration securely using exported environment variables 
+
 ## Project Objectives
 
 - Create a clean and intuitive tool for managing employees at a glance
@@ -139,6 +149,10 @@ spring.datasource.password=your_password
 spring.jpa.hibernate.ddl-auto=update
 spring.jpa.show-sql=true
 spring.jpa.properties.hibernate.format_sql=true
+
+aws.s3.access.key = ${AWS_KEY}
+aws.s3.secret.key = ${AWS_SECRET_KEY}
+aws.s3.bucket=${AWS_BUCKET_NAME}
 ```
 
 **4. Install Dependencies:**
@@ -147,7 +161,20 @@ spring.jpa.properties.hibernate.format_sql=true
 mvn clean install
 ```
 
-**5. Run the application:**
+**5. Export your environment variables**
+
+- Use the following command with existing credentials
+
+```sh
+export MYSQL_PASS=yourpassword
+export DB_NAME=yourdbname
+export MYSQL_USER=root
+export AWS_KEY=yourawskey
+export AWS_SECRET_KEY=yoursecretawskey
+export AWS_BUCKET_NAME=yourawsbucketname
+```
+
+**6. Run the application:**
 
 - Use the following command to run the application:
 
