@@ -73,11 +73,11 @@ Backend (Spring Boot)
 
 ### Employee List
 
-![Image](https://github.com/user-attachments/assets/0f0b4624-56e8-4026-a566-b0ebd4ed3154)
+![Image](https://github.com/user-attachments/assets/7dd66224-45df-4ff8-8c33-785ae5a26173)
 
 ### Employee Form
 
-![Image](https://github.com/user-attachments/assets/763d9fe8-6ff2-42a0-b2f4-c1bb2d84413d)
+![Image](https://github.com/user-attachments/assets/7af481ff-6bdf-4b2f-addd-4f2b713a7caf)
 
 ### Form Validation
 
