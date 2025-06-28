@@ -14,6 +14,7 @@ Responsive frontend built with React + TypeScript, Spring Boot (Java) backend an
 - Styling: SCSS/ CSS Modules
 - Backend: Java, Spring Boot,Spring Data JPA, Maven
 - Database: MySQL
+- Hosting: Netlify (frontend), Render (backend)
 
 ## Table of Contents
 
@@ -33,6 +34,8 @@ PulseBoard is a responsive and interactive tool for managing employee records. I
 
 Frontend (React + TypeScript):
 
+- Hosted on Netlify for fast global delivery via CDN
+
 - Add, edit, and delete employee records
 
 - View employees in a card-based layout
@@ -44,6 +47,8 @@ Frontend (React + TypeScript):
 - Custom global state management using a React Context Provider to manage employee data efficiently and avoid prop drilling
 
 Backend (Spring Boot)
+
+- Hosted on Render cloud platform with auto-deploy from GitHub
 
 - Connected to a MySQL database for persistent data storage, with optimized data retrieval using native SQL queries for specific business logic.
 
@@ -64,6 +69,8 @@ Backend (Spring Boot)
 - URL is returned to the frontend for real-time image preview and persistent display
 
 - Configured Spring Boot to manage credentials and bucket configuration securely using exported environment variables 
+
+
 
 ## Project Objectives
 
