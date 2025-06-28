@@ -34,7 +34,7 @@ PulseBoard is a responsive and interactive tool for managing employee records. I
 
 Frontend (React + TypeScript):
 
-- Hosted on Netlify for fast global delivery via CDN
+- Hosted on Netlify with secure environment variables
 
 - Add, edit, and delete employee records
 
