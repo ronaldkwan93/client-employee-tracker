@@ -6,8 +6,6 @@
   flex-direction: column;
   align-items: center;
   box-shadow: 1px 7px 5px 0px rgba(0, 0, 0, 0.43);
-  -webkit-box-shadow: 1px 7px 5px 0px rgba(0, 0, 0, 0.43);
-  -moz-box-shadow: 1px 7px 5px 0px rgba(0, 0, 0, 0.43);
 
   img {
     width: 30%;
@@ -15,5 +13,51 @@
     max-height: 10vh;
     object-fit: cover;
     border-radius: 30px;
+  }
+}
+
+.modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  backdrop-filter: blur(5px);
+  background-color: rgba(0, 0, 0, 0.3);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal {
+  background-color: white;
+  padding: 2rem;
+  border-radius: 10px;
+  text-align: center;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  z-index: 1001;
+}
+
+.modalButtons {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 1rem;
+  margin: 0 2em;
+
+  button {
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+  }
+
+  button:first-child {
+    background-color: red;
+    color: white;
+  }
+
+  button:last-child {
+    background-color: lightgray;
   }
 }
